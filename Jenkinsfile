@@ -21,5 +21,20 @@ pipeline {
         }
       }
     }
+    stage('hahah') {
+      agent {
+        docker {
+          image 'goalng'
+          args 'echo $test'
+        }
+
+      }
+      environment {
+        test = '11'
+      }
+      steps {
+        sh './jenkins/scripts/test.sh'
+      }
+    }
   }
 }
