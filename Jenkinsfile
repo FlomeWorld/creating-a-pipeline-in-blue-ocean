@@ -8,8 +8,17 @@ pipeline {
   }
   stages {
     stage('Build') {
-      steps {
-        echo 'build start'
+      parallel {
+        stage('Build') {
+          steps {
+            echo 'build start'
+          }
+        }
+        stage('Test') {
+          steps {
+            sleep 5
+          }
+        }
       }
     }
   }
